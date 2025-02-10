@@ -1,5 +1,5 @@
 # Boston Air Quality Predictor (BAQP)
- Time-Series Machine Learning for Next-Day AQI Forecasting in Boston.
+ _Time-Series Machine Learning for Next-Day AQI Forecasting in Boston._
 # Executive Summary
 Air Quality Index is a clear and standardized indicator of air pollution levels, and is of great significance for individuals, communities and policy makers to make well informed decisions to protect the environment and public health. By leveraging spatial and temporal geographic information, we aim to build an accurate and robust Air Quality Index Predictor for Boston city.
 
