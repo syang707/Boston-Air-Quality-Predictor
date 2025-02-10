@@ -5,14 +5,12 @@ Air Quality Index is a clear and standardized indicator of air pollution levels,
 
 
 # Project Description
-This project aims to predict Boston’s next-day Air Quality Index (AQI) using past year’s air quality and weather data. We will analyze variables such as temperature, humidity, wind speed, and precipitation. We hope to identify key influences on air pollution and improve forecasting accuracy.
-We aim to collect at least 10 years of AQI data from aqi and weather data from sources like https://aqicn.org/city/boston/. Our approach includes baseline models such as linear regression, alongside more advanced methods like decision trees, XGBoost, and LSTMs to capture time-series consistentices and variations.
-Visualization will include time-series plots, correlation heatmaps, and feature importance charts. Seasonal variations will also be analyzed to ensure model robustness.
+This project aims to predict Boston’s next-day Air Quality Index (AQI) using past year’s air quality and weather data. We will analyze variables such as temperature, wind speed, and precipitation. We hope to identify key influences on air pollution and improve forecasting accuracy. We aim to collect at least 10 years of AQI data from aqi and weather data from sources of local database. Our approach includes baseline models such as linear regression, alongside more advanced methods like LSTM and Random Forest Regressor to capture time-series consistentices and variations. Visualization will include time-series plots, correlation heatmaps, and feature importance charts. Seasonal variations will also be analyzed to ensure model robustness.
 By leveraging machine learning, this project aims to develop a practical tool for AQI prediction, helping Boston residents and policymakers make informed decisions about air quality.
 
 
 # Goals
-- Prediction Accuracy: Forecast next-day AQI with improved accuracy over baseline models (moving average & linear regression). We will identify weather factors such as temperature, humidity, wind speed that can impact AQI and analyze seasonal trends.
+- Prediction Accuracy: Forecast next-day AQI with improved accuracy over baseline models (moving average & linear regression). We will identify weather factors such as temperature, wind speed and precipitation that can impact AQI and analyze seasonal trends.
 
 - Data Processing will be used through collecting and cleaning at least 10 years of AQI and weather data, handling missing values and outliers. Visualization through the use of time-series plots, heatmaps, and feature importance charts to interpret model predictions. Lastly, we will use model robustness to ensure consistency across seasons and test on extreme AQI events.
 
@@ -20,12 +18,13 @@ By leveraging machine learning, this project aims to develop a practical tool fo
 
 # Data Collection 
 - Source: 
-We will be using online resources for data collection from the last 10 years of Boston, MA. We will use reputable sources such as https://aqicn.org/historical/#!city:boston and government databases. 
+We will be using online resources for data collection from the last 10 years of Boston, MA. We will use reputable sources such as https://aqicn.org/historical/#!city:boston, https://www.wunderground.com/history/monthly/us/ma/boston and other government databases. 
 
 - Features:
-  - Weather: the temperature daily
+  - Temperature: the temperature daily
   - Air quality index ( AQI): determining the pollution in the air 
   - Wind speed: direction of the wind and speed
+  - Precipitation: the amount of rainfall or snowfall recorded each day.
   - Time of day: the air quality can change throughout the day 
 
 
