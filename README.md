@@ -31,14 +31,19 @@ We will be using online resources for data collection from the last 10 years of 
 
 
 # Data Cleaning
+To make sure our data is accurate and useful for predicting air quality, we will clean it by:
 
-
-
+Filling in Missing Data: If there are gaps in AQI, temperature, or wind speed data, we will estimate the missing values using simple methods like averaging nearby data points or carrying forward previous values when appropriate.
+Removing Errors and Outliers: Sometimes, sensors might record incorrect values, like a sudden spike in AQI that doesn’t match the trend. We will identify and remove these extreme values using statistical methods.
+Smoothing Data: Air quality readings can fluctuate due to sudden short-term factors like traffic or temporary weather changes. These fluctuations can make it harder for the model to detect trends. To reduce this, we will take Rolling Averages. We will take the average AQI over a small time window, to smooth out short-term fluctuations and highlight long-term trends.
 
 # Feature Extraction
+Past AQI Values: Using AQI from previous days (1-day, 3-day) to help the model detect trends.
+Rolling Averages: Smoothing AQI fluctuations by averaging values over the past few days.
+Weather Factors: Including temperature, humidity, and wind speed to account for their impact on air quality.
+Time-Based Features: Adding day of the week and season to reflect pollution patterns.
 
-
-
+Since these factors have different units, we will scale them for consistency.
 
 # Modelling
 - Model Architecture: develop a machine learning model to predict the next day’s AQI in Boston using historical air quality and weather data. We will try testing different architectures including LSTM, OLS Linear Regression and Random Forest Regressor.
