@@ -25,7 +25,6 @@ We will be using online resources for data collection from the last 10 years of 
   - Air quality index ( AQI): determining the pollution in the air 
   - Wind speed: direction of the wind and speed
   - Precipitation: the amount of rainfall or snowfall recorded each day.
-  - Time of day: the air quality can change throughout the day 
 
 
 # Data Cleaning
