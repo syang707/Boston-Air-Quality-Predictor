@@ -1,11 +1,11 @@
 # Boston Air Quality Predictor (BAQP)
  _Time-Series Machine Learning for Next-Day AQI Forecasting in Boston._
 # Executive Summary
-Air Quality Index is a clear and standardized indicator of air pollution levels, and is of great significance for individuals, communities and policy makers to make well informed decisions to protect the environment and public health. By leveraging spatial and temporal geographic information, we aim to build an accurate and robust Air Quality Index Predictor for Boston city.
+The Air Quality Index (AQI) is a standardized measure of air pollution levels and plays a crucial role for individuals, communities and policy makers to make well informed decisions to protect the environment and public health. By leveraging spatial and temporal geographic information, we aim to build an accurate and robust Air Quality Index Predictor for Boston city.
 
 
 # Project Description
-This project aims to predict Boston’s next-day Air Quality Index (AQI) using past year’s air quality and weather data. We will analyze variables such as temperature, wind speed, and precipitation. We hope to identify key influences on air pollution and improve forecasting accuracy. We aim to collect at least 10 years of AQI data from aqi and weather data from sources of local database. Our approach includes baseline models such as linear regression, alongside more advanced methods like LSTM and Random Forest Regressor to capture time-series consistentices and variations. Visualization will include time-series plots, correlation heatmaps, and feature importance charts. Seasonal variations will also be analyzed to ensure model robustness.
+This project aims to predict Boston’s next-day Air Quality Index (AQI) using past ten years’ air quality and weather data. We will analyze variables such as temperature, wind speed, and precipitation. We hope to identify key influences on air pollution and improve forecasting accuracy. We aim to collect at least 10 years of AQI data from aqi and weather data from sources of local database. Our approach includes baseline models such as linear regression, alongside more advanced methods like LSTM and Random Forest Regressor to capture time-series consistentices and variations. Visualization will include time-series plots, correlation heatmaps, and feature importance charts. Seasonal variations will also be analyzed to ensure model robustness.
 By leveraging machine learning, this project aims to develop a practical tool for AQI prediction, helping Boston residents and policymakers make informed decisions about air quality.
 
 
@@ -32,7 +32,7 @@ To make sure our data is accurate and useful for predicting air quality, we will
 
 - Filling in Missing Data: If there are gaps in AQI, temperature, or wind speed data, we will estimate the missing values using simple methods like averaging nearby data points or carrying forward previous values when appropriate.
 - Removing Errors and Outliers: Sometimes, sensors might record incorrect values, like a sudden spike in AQI that doesn’t match the trend. We will identify and remove these extreme values using statistical methods.
-- Smoothing Data: Air quality readings can fluctuate due to sudden short-term factors like traffic or temporary weather changes. These fluctuations can make it harder for the model to detect trends. To reduce this, we will take Rolling Averages. We will take the average AQI over a small time window, to smooth out short-term fluctuations and highlight long-term trends.
+- Smoothing Data: Air quality readings can fluctuate due to sudden short-term factors like traffic or temporary weather changes. These fluctuations can make it harder for the model to detect trends. To reduce this, we will take Rolling Averages. We will apply rolling average AQIs over short time windows to smooth fluctuations and capture long-term trends.
 
 # Feature Extraction
 - Past AQI Values: Using AQI from previous days (1-day, 3-day) to help the model detect trends.
@@ -61,10 +61,10 @@ Dimensionality Reduction (PCA, t-SNE, UMAP). Convert high-dimensional AQI and me
 # Test Plan / Metrics
 - Data Split:
   - Training Set (80%): Train the model on historical AQI and weather data from different seasons over the past 10 years (without the last two years).
-  - Testing Set (20%): split about 20% of our data (recently two years' data) as validation data to test as we train the model.
+  - Testing Set (20%): split the most recent two years of data (20% of the dataset) for validation to test as we train the model.
 
 - Evaluation Metrics:
   - Mean Absolute Error (MAE): Measures the average absolute difference between predicted and actual AQI values.
   - Mean Squared Error (MSE): Penalizes larger errors more than MAE, useful for assessing severe mispredictions.
   - R-squared (R²): Measures how well the model explains the variance in AQI.
-  - Prediction Stability: Compare next-day predictions over different test periods to ensure consistency and avoid erratic fluctuations.
+  - Prediction Stability: Evaluate prediction stability by comparing model forecasts across different test periods to detect inconsistencies or erratic fluctuations.
