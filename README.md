@@ -5,7 +5,7 @@ The Air Quality Index (AQI) is a standardized measure of air pollution levels an
 
 
 # Project Description
-This project aims to predict Boston’s next-day Air Quality Index (AQI) using past ten years’ air quality and weather data. We will analyze variables such as temperature, wind speed, and precipitation. We hope to identify key influences on air pollution and improve forecasting accuracy. We aim to collect at least 10 years of AQI data from aqi and weather data from sources of local database. Our approach includes baseline models such as linear regression, alongside more advanced methods like LSTM and Random Forest Regressor to capture time-series consistentices and variations. Visualization will include time-series plots, correlation heatmaps, and feature importance charts. Seasonal variations will also be analyzed to ensure model robustness.
+This project aims to predict Boston’s next-day Air Quality Index (AQI) using past ten years’ air quality and weather data. We will analyze variables such as temperature, wind speed, and precipitation. We hope to identify key influences on air pollution and improve forecasting accuracy. We aim to collect at least 10 years of AQI data from aqi and weather data from sources of local database. Our approach includes LSTM and Random Forest Regressor to capture time-series consistentices and variations, alongside more advanced methods like transformers will also be included to deal with SOTA models at sequential tasks. Visualization will include time-series plots, correlation heatmaps, and feature importance charts. Seasonal variations will also be analyzed to ensure model robustness.
 By leveraging machine learning, this project aims to develop a practical tool for AQI prediction, helping Boston residents and policymakers make informed decisions about air quality.
 
 
@@ -43,10 +43,11 @@ To make sure our data is accurate and useful for predicting air quality, we will
 Since these factors have different units, we will scale them for consistency.
 
 # Modelling
-- Model Architecture: develop a machine learning model to predict the next day’s AQI in Boston using historical air quality and weather data. We will try testing different architectures including LSTM, OLS Linear Regression and Random Forest Regressor.
+- Model Architecture: develop a machine learning model to predict the next day’s AQI in Boston using historical air quality and weather data. We will try testing different architectures including LSTM for time-series analysis, Random Forest Regressor as Tree-Based Models and Transformers as Cutting-edge sequential models for complex dependencies.
 
 - Training Approach: 
   - Supervised Learning: Train the model on historical AQI and weather features to learn the probability distribution of AQI values for the next day. Experiment with different loss functions (e.g., MSE, MAE) and optimizers (Adam, SGD).
+  - Deep Neural Networks: Explore multi-layer architectures for better feature extraction.
 
 
 # Visualization
