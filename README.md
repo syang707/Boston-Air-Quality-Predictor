@@ -67,3 +67,10 @@ We used Time-Series Forecast Plots to compare the real AQI vs. predicted AQI tre
 
 ![image](https://github.com/user-attachments/assets/315d5c58-a9b6-4c6a-9a0c-e206dcb2cc50)
 
+
+# Reproducability
+In order to reproduce our result, follow these steps:
+- download train_with_aqi.csv and forecast.ipynb
+- upload train_with_aqi.csv to forecast.ipynb
+- run through forecast.ipynb
+
