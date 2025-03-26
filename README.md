@@ -14,9 +14,9 @@ By leveraging machine learning, this project aims to develop a practical tool fo
 - Data Processing will be used through collecting and cleaning at least 10 years of AQI and weather data, handling missing values and outliers. Visualization through the use of time-series plots, heatmaps, and feature importance charts to interpret model predictions. Lastly, we will use model robustness to ensure consistency across seasons and test on extreme AQI events.
 
 
-# Data Collection 
+# Dataset
 - Source: 
-We will be using online resources for data collection from the last 10 years of Boston, MA, from 2015 January 1st to 2025 January 1st. We will use reputable sources including https://aqicn.org/historical/#!city:boston and https://www.visualcrossing.com/weather-query-builder/ as our database. For the AQI, we calculated from the basic bata to get a daily AQI.
+We used online resources for data collection from the last 10 years of Boston, MA, from 2015 January 1st to 2025 January 1st. We will use reputable sources including https://aqicn.org/historical/#!city:boston and https://www.visualcrossing.com/weather-query-builder/ as our database. For the AQI, we calculated from the basic bata to get a daily AQI.
 
 - Features:
   - Temperature: the temperature daily
@@ -25,12 +25,15 @@ We will be using online resources for data collection from the last 10 years of 
   - Precipitation: the amount of rainfall or snowfall recorded each day.
 
 
-# Data Cleaning
+# Data preprocessing
 To make sure our data is accurate and useful for predicting air quality, we clean it by:
 
 - Filling in Missing Data: If there are gaps in AQI, temperature, or wind speed data, we will estimate the missing values using simple methods like averaging nearby data points or carrying forward previous values when appropriate.
-- Removing Errors and Outliers: Sometimes, sensors might record incorrect values, like a sudden spike in AQI that doesn’t match the trend. We will identify and remove these extreme values using statistical methods.
-- Smoothing Data: Air quality readings can fluctuate due to sudden short-term factors like traffic or temporary weather changes. These fluctuations can make it harder for the model to detect trends. To reduce this, we will take Rolling Averages. We will apply rolling average AQIs over one-day windows to smooth fluctuations and capture long-term trends.
+- Removing Errors and Outliers: Sometimes, sensors might record incorrect values, like a sudden spike in AQI that doesn’t match the trend. We identify and remove these extreme values using statistical methods.
+- Smoothing Data: Air quality readings can fluctuate due to sudden short-term factors like traffic or temporary weather changes. These fluctuations can make it harder for the model to detect trends. To reduce this, we apply rolling average AQIs over one-day windows to smooth fluctuations and capture long-term trends.
+
+To check the accuracy of our prediction, we used split data into Training Set (80%) to train the model on historical AQI and weather data from different seasons over the past 10 years (without the last two years) and Testing Set (20%) to split the most recent two years of data (20% of the dataset) for validation to test how we trained with the model.
+Also, we used Mean Absolute Error (MAE) as our Evaluation Metric to measure the average absolute difference between predicted and actual AQI values.
 
 
 # Feature Extraction
@@ -39,13 +42,13 @@ To make sure our data is accurate and useful for predicting air quality, we clea
 - Weather Factors: Including temperature, humidity, and wind speed to account for their impact on air quality.
 - Time-Based Features: Adding day of the week and season to reflect pollution patterns.
 
-Since these factors have different units, we will scale them for consistency.
+Since these factors have different units, we scale them for consistency.
 
 
 # Modelling
-- Model Architecture: develop a GRU-based Sequence Model to predict the next day's AQI in Boston using historical air quality and weather data. It implemented a GRU (Gated Recurrent Unit) network for time-series forecasting of AQI and weather features. 
+We developed a GRU-based Sequence Model to predict the next day's AQI in Boston using historical air quality and weather data. It implemented a GRU (Gated Recurrent Unit) network for time-series forecasting of AQI and weather features. 
 
-- The architecture consists of:
+The architecture consists of:
 - 3-layer GRU encoder (hidden_size=32) for temporal pattern extraction
 - Fully connected decoder network with ReLU activation for multi-feature prediction
 - Multi-output Regression: Simultaneously predicts next-day values for temperature, humidity, precipitation, and AQI (4-dimensional output)
@@ -56,16 +59,11 @@ Since these factors have different units, we will scale them for consistency.
 
 
 # Visualization
-- Time-Series Forecast Plots: Compare real vs. predicted AQI trends using Matplotlib. Date-aware x-axis ticks for temporal alignment, and Feature-specific denormalization for interpretable scales. Show confidence intervals around predictions.
+We used Time-Series Forecast Plots to compare the real AQI vs. predicted AQI trends using Matplotlib. Date-aware x-axis ticks for temporal alignment, and Feature-specific denormalization for interpretable scales. Show confidence intervals around predictions.
 
 - Multi-feature Diagnostics:
   - Separate subplots for temperature, humidity, precipitation, and AQI predictions
   - Shared time axis for cross-feature comparison
 
-# Test Plan / Metrics
-- Data Split:
-  - Training Set (80%): Train the model on historical AQI and weather data from different seasons over the past 10 years (without the last two years).
-  - Testing Set (20%): split the most recent two years of data (20% of the dataset) for validation to test as we train the model.
+![image](https://github.com/user-attachments/assets/315d5c58-a9b6-4c6a-9a0c-e206dcb2cc50)
 
-- Evaluation Metrics:
-  - Mean Absolute Error (MAE): Measures the average absolute difference between predicted and actual AQI values.
