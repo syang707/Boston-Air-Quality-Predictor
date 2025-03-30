@@ -1,8 +1,9 @@
 # Boston Air Quality Predictor (BAQP)
  _Time-Series Machine Learning for Next-Day AQI Forecasting in Boston._
-# Executive Summary
+# Summary
 The Air Quality Index (AQI) is a standardized measure of air pollution levels and plays a crucial role for individuals, communities and policy makers to make well informed decisions to protect the environment and public health. By leveraging spatial and temporal geographic information, we aim to build an accurate and robust Air Quality Index Predictor for Boston city.
 
+Check our introduction vedio here: https://youtu.be/FVC1Gi_Y0Ps
 
 # Project Description
 This project aims to predict Boston’s next-day Air Quality Index (AQI) using past ten years’ air quality and weather data. We will analyze variables such as temperature, wind speed, and precipitation. We hope to identify key influences on air pollution and improve forecasting accuracy. We aim to collect the past 10 years of AQI data from aqi and weather data from sources of local database. Our approach includes RNN to capture time-series consistentices and variations. Visualization will include time-series plots. Seasonal variations will also be analyzed to ensure model robustness.
