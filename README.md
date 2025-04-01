@@ -54,6 +54,8 @@ The architecture consists of:
 - Fully connected decoder network with ReLU activation for multi-feature prediction
 - Multi-output Regression: Simultaneously predicts next-day values for temperature, humidity, precipitation, and AQI (4-dimensional output)
 
+![image](https://github.com/user-attachments/assets/65a851fd-34a5-4f7e-8c8d-6195fd94be5e)
+
 - Training Approach: 
   - Supervised Learning: Train the model on historical AQI and weather features to learn the predicted AQI values for the next day. The input is Sliding windows of 3-day historical sequences (normalized) and the output would be the next-day predicted values. Using loss functions (Mean Squared Error (MSE) for joint feature prediction) and optimizers (Adam (lr=0.001) with gradient clipping).
   - Data Handling: a WeatherDataset class with Z-score normalization per feature, Configurable window size (3 days) and prediction horizon (1 day ahead), NaN handling via zero-imputation and Dynamic batching with collate_fn for variable-length sequences.
