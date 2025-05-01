@@ -6,7 +6,7 @@ KERNEL_NAME=forecast-kernel
 
 setup:
 	pip install -r requirements.txt
-	python -m ipykernel install --user --name $(KERNEL_NAME)
+	python3 -m ipykernel install --user --name $(KERNEL_NAME)
 
 
 run:
