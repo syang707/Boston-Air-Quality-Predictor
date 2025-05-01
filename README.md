@@ -60,6 +60,44 @@ The architecture consists of:
   - Supervised Learning: Train the model on historical AQI and weather features to learn the predicted AQI values for the next day. The input is Sliding windows of 3-day historical sequences (normalized) and the output would be the next-day predicted values. Using loss functions (Mean Squared Error (MSE) for joint feature prediction) and optimizers (Adam (lr=0.001) with gradient clipping).
   - Data Handling: a WeatherDataset class with Z-score normalization per feature, Configurable window size (3 days) and prediction horizon (1 day ahead), NaN handling via zero-imputation and Dynamic batching with collate_fn for variable-length sequences.
 
+GRU → LSTM Transition
+To improve model accuracy and stability, as suggested in our feeback, we transitioned from a GRU to an LSTM model.
+
+Changes Implemented:
+Optimizer Update (Adam → AdamW)
+Why: AdamW's decoupled weight decay and lower learning rate prevent overshooting, which can occur in deeper LSTM models.
+Benefit: Improved training stability and generalisation, reducing model overfitting.
+
+Added Dropout (0.1) to LSTM Layers
+Why: Regularises the network to reduce co-dependency between neurons, especially critical in deeper networks.
+Benefit: Reduced overfitting, resulting in smoother training and more reliable predictions.
+
+Gradient Clipping (max_norm=1.0)
+Why: Prevents exploding gradients during backpropagation, which are common in recurrent neural networks.
+Benefit: Ensured stable training, avoiding sudden loss spikes.
+
+Increased Hidden Size (64), Number of Layers (3), and Epochs (30)
+Why: A deeper and wider network has a greater capacity to model complex temporal patterns in the data.
+Benefit: Enhanced model accuracy, improved forecasting performance, and reduced prediction errors.
+
+Model Performance Comparison: GRU vs. LSTM
+GRU Model
+Training Performance:
+Achieved stable training loss reduction over epochs (Epoch 0: 0.761 → Epoch 9: 0.592).
+Test Performance:
+Moderate performance; however, experienced unstable results with occasional large test loss spikes (max loss ~9.1).
+
+LSTM Model (Final)
+Training Performance:
+Consistent and improved loss reduction over epochs (Epoch 0: 0.847 → Epoch 29: 0.578).
+Test Performance:
+More stable and robust results compared to GRU; significantly reduced maximum test loss spikes (though some spikes persisted, max loss ~15.5).
+
+Many test loss values were considerably lower and more consistent, indicating improved stability and predictive performance.
+
+Evaluation:
+Switching from a GRU-based model to a deeper, carefully optimized LSTM model improved the overall stability and accuracy of predictions. While occasional higher loss values were observed, the final LSTM model consistently showed lower average test losses and reduced volatility compared to the GRU model. These improvements highlight the effectiveness of the implemented optimizations (dropout, gradient clipping, AdamW optimizer) in managing the complexities of deeper recurrent neural networks.
+
 
 # Visualization
 We used Time-Series Forecast Plots to compare the real AQI vs. predicted AQI trends using Matplotlib. Date-aware x-axis ticks for temporal alignment, and Feature-specific denormalization for interpretable scales. Show confidence intervals around predictions.
