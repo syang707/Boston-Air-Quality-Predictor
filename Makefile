@@ -12,6 +12,7 @@ setup:
 run:
 	jupyter nbconvert --to notebook --execute $(NOTEBOOK) \
 	--ExecutePreprocessor.kernel_name=$(KERNEL_NAME) \
+	--ExecutePreprocessor.timeout=600 \
 	--output $(OUTPUT)
 
 clean:
