@@ -108,10 +108,21 @@ We used Time-Series Forecast Plots to compare the real AQI vs. predicted AQI tre
 
 ![image](https://github.com/user-attachments/assets/315d5c58-a9b6-4c6a-9a0c-e206dcb2cc50)
 
+To show our improve from GRU model to LSTM model, we used Line  Chart to compare the Loss between the real AQI and predicted AQI trends using Matplotlib.
+![image](https://github.com/user-attachments/assets/b9e78a03-5b39-4dbc-a6ea-53e7193711d8)
+
+
 
 # Reproducability
-In order to reproduce our result, follow these steps:
-- download train_with_aqi.csv and forecast.ipynb
-- upload train_with_aqi.csv to forecast.ipynb
-- run through forecast.ipynb
+The code is primed to run on an example dataset, with training set and testing set in file datasets/dataset. Also shown in github workflow, the code could be tested on datasets in file datasets/dataset_missing_temp_humidity that it will fail with incorrect dataset format.
+
+In order to run on the actual dataset, rather than our example data:
+
+Make sure your dataset format included: datetime, temp, humidity, precip, overall_AQI as column input.
+Store your testing and training data (csv file format) as a file under file datasets/your_wanted file name, name them as "test_with_aqi" and "train_with_aqi".
+
+To run and train a model:
+make clean (to make sure clean up the environment)
+make setup (that will install requirements to create an environment)
+make run (runs the whole jupyter notebook)
 
