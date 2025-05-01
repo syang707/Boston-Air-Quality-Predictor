@@ -185,7 +185,7 @@ lstm_loss = [    0.19354885816574097, 0.3380761742591858, 0.20931462943553925, 2
 epochs = range(1, len(gru_loss) + 1)
 
 
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(16, 5))
 plt.plot(epochs, gru_loss, marker='o', label='GRU', color='blue', markersize=1,linewidth=0.6)
 plt.plot(epochs, lstm_loss, marker='s', label='LSTM', color='red', markersize=1, linestyle='--', linewidth=0.6,  alpha=0.7)
 
