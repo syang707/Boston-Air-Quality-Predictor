@@ -1,0 +1,64 @@
+name: Test Notebook with Different Datasets
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install nbconvert
+
+    # Step 1: Run with the first dataset (dataset1)
+    - name: Set data directory for dataset 1
+      run: echo "DATA_DIR=datasets/dataset/" >> $GITHUB_ENV
+
+    - name: Run notebook with dataset 1
+      run: |
+        jupyter nbconvert --to notebook --execute forecastlstm.ipynb --ExecutePreprocessor.kernel_name=python3 --output result_1.ipynb
+
+    - name: Check for errors in result_1
+      run: |
+        tail -n 10 result_1.ipynb
+        if grep -q "error" result_1.ipynb; then
+          echo "Errors found in notebook execution with dataset 1"
+          exit 1
+        else
+          echo "Notebook ran successfully with dataset 1"
+        fi
+
+    # Step 2: Run with the second dataset (dataset2)
+    - name: Set data directory for dataset missing_temp_humidity
+      run: echo "DATA_DIR=datasets/dataset_missing_temp_humidity/" >> $GITHUB_ENV
+
+    - name: Run notebook with dataset missing_temp_humidity
+      run: |
+        jupyter nbconvert --to notebook --execute forecastlstm.ipynb --ExecutePreprocessor.kernel_name=python3 --output result_missing_temp_humidity.ipynb
+
+    - name: Check for errors in result_missing_temp_humidity
+      run: |
+        tail -n 10 result_missing_temp_humidity.ipynb
+        if grep -q "error" result_missing_temp_humidity.ipynb; then
+          echo "Errors found in notebook execution with dataset missing_temp_humidity"
+          exit 1
+        else
+          echo "Notebook ran successfully with dataset missing_temp_humidity"
+        fi
