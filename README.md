@@ -88,7 +88,6 @@ The architecture consists of:
     - Training Performance: Consistent and improved loss reduction over epochs (Epoch 0: 0.847 → Epoch 29: 0.578).
   - Test Performance: More stable and robust results compared to GRU; significantly reduced maximum test loss spikes (though some spikes persisted, max loss ~15.5).
  
-![image](https://github.com/user-attachments/assets/0084b935-e7de-4633-bf79-3327224776a3)
 
 Overall, many test loss values were considerably lower and more consistent, indicating improved stability and predictive performance.
 Switching from a GRU-based model to a deeper, carefully optimized LSTM model improved the overall stability and accuracy of predictions. While occasional higher loss values were observed, the final LSTM model consistently showed lower average test losses and reduced volatility compared to the GRU model. These improvements highlight the effectiveness of the implemented optimizations (dropout, gradient clipping, AdamW optimizer) in managing the complexities of deeper recurrent neural networks.
