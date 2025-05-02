@@ -44,4 +44,22 @@ jobs:
         else
           echo "Notebook ran successfully with dataset 1"
         fi
+        
+    # Step 2: Run with the second dataset (dataset2)
+    - name: Set data directory for dataset missing_temp_humidity
+      run: echo "DATA_DIR=datasets/dataset_missing_temp_humidity/" >> $GITHUB_ENV
+
+    - name: Run notebook with dataset missing_temp_humidity
+      run: |
+        jupyter nbconvert --to notebook --execute forecastlstm.ipynb --ExecutePreprocessor.kernel_name=python3 --output result_missing_temp_humidity.ipynb
+
+    - name: Check for errors in result_missing_temp_humidity
+      run: |
+        tail -n 10 result_missing_temp_humidity.ipynb
+        if grep -q "error" result_missing_temp_humidity.ipynb; then
+          echo "Errors found in notebook execution with dataset missing_temp_humidity"
+          exit 1
+        else
+          echo "Notebook ran successfully with dataset missing_temp_humidity"
+        fi
 
