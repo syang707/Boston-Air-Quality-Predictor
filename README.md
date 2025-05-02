@@ -59,7 +59,9 @@ The architecture consists of:
 - Training Approach: 
   - Supervised Learning: Train the model on historical AQI and weather features to learn the predicted AQI values for the next day. The input is Sliding windows of 3-day historical sequences (normalized) and the output would be the next-day predicted values. Using loss functions (Mean Squared Error (MSE) for joint feature prediction) and optimizers (Adam (lr=0.001) with gradient clipping).
   - Data Handling: a WeatherDataset class with Z-score normalization per feature, Configurable window size (3 days) and prediction horizon (1 day ahead), NaN handling via zero-imputation and Dynamic batching with collate_fn for variable-length sequences.
-<br/><br/>
+
+
+    
 To improve model accuracy and stability, as suggested in our feedback, we transitioned from a GRU to an LSTM model.
 - Changes Implemented:
   - Optimizer Update (Adam → AdamW)
@@ -75,7 +77,8 @@ To improve model accuracy and stability, as suggested in our feedback, we transi
   - Increased Hidden Size (64), Number of Layers (3), and Epochs (30)
   - Why: A deeper and wider network has a greater capacity to model complex temporal patterns in the data.
   - Benefit: Enhanced model accuracy, improved forecasting performance, and reduced prediction errors.
-<br/>
+
+  
 - Model Performance Comparison: GRU vs. LSTM
   - GRU Model
   - Training Performance: Achieved stable training loss reduction over epochs (Epoch 0: 0.761 → Epoch 9: 0.592).
