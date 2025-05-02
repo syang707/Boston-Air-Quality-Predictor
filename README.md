@@ -125,3 +125,25 @@ In order to run on the actual dataset, rather than our example data:
 - make setup (that will install requirements to create an environment)
 - make run (runs the whole jupyter notebook)
 
+
+# Github workflow
+For the case testing, the GitHub Actions workflow ensures that our Jupyter Notebook (forecastlstm.ipynb) runs correctly with different datasets. 
+
+It performs automated testing on two scenarios:
+
+- Test Case 1: Valid Dataset (datasets/dataset/)
+  - Sets the environment variable DATA_DIR to point to the standard dataset.
+  - Using our given correct datasets to run the model.
+  - Executes the notebook and saves the output as result_1.ipynb.
+  - Checks for execution errors to confirm successful processing.
+
+- Test Case 2: Invalid Dataset with Missing Columns (datasets/dataset_missing_temp_humidity/)
+  - Simulates a faulty input scenario (missing temperature and humidity columns).
+  - Verifies that the notebook raises an appropriate error during execution.
+  - Ensures robustness against improper input formats.
+
+This testing pipeline helps maintain notebook reliability and catches dataset formatting issues early during continuous integration.
+
+![image](https://github.com/user-attachments/assets/9cf6a3ad-147d-4c93-9d0e-3c0cb3fb2ec3)
+
+
