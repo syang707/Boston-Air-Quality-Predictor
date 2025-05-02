@@ -136,6 +136,7 @@ It performs automated testing on two scenarios:
   - Using our given correct datasets to run the model.
   - Executes the notebook and saves the output as result_1.ipynb.
   - Checks for execution errors to confirm successful processing.
+![image](https://github.com/user-attachments/assets/866d036b-d216-4424-8387-83981b6b59d8)
 
 - Test Case 2: Invalid Dataset with Missing Columns (datasets/dataset_missing_temp_humidity/)
   - Simulates a faulty input scenario (missing temperature and humidity columns).
