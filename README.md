@@ -32,7 +32,7 @@ To make sure our data is accurate and useful for predicting air quality, we clea
 - Filling in Missing Data: If there are gaps in AQI, temperature, or wind speed data, we will estimate the missing values using simple methods like averaging nearby data points or carrying forward previous values when appropriate.
 - Removing Errors and Outliers: Sometimes, sensors might record incorrect values, like a sudden spike in AQI that doesn’t match the trend. We identify and remove these extreme values using statistical methods.
 - Smoothing Data: Air quality readings can fluctuate due to sudden short-term factors like traffic or temporary weather changes. These fluctuations can make it harder for the model to detect trends. To reduce this, we apply rolling average AQIs over one-day windows to smooth fluctuations and capture long-term trends.
-
+<br/>
 To check the accuracy of our prediction, we used split data into Training Set (80%) to train the model on historical AQI and weather data from different seasons over the past 10 years (without the last two years) and Testing Set (20%) to split the most recent two years of data (20% of the dataset) for validation to test how we trained with the model.
 Also, we used Mean Absolute Error (MAE) as our Evaluation Metric to measure the average absolute difference between predicted and actual AQI values.
 
@@ -59,7 +59,7 @@ The architecture consists of:
 - Training Approach: 
   - Supervised Learning: Train the model on historical AQI and weather features to learn the predicted AQI values for the next day. The input is Sliding windows of 3-day historical sequences (normalized) and the output would be the next-day predicted values. Using loss functions (Mean Squared Error (MSE) for joint feature prediction) and optimizers (Adam (lr=0.001) with gradient clipping).
   - Data Handling: a WeatherDataset class with Z-score normalization per feature, Configurable window size (3 days) and prediction horizon (1 day ahead), NaN handling via zero-imputation and Dynamic batching with collate_fn for variable-length sequences.
-
+<br/><br/>
 To improve model accuracy and stability, as suggested in our feedback, we transitioned from a GRU to an LSTM model.
 - Changes Implemented:
   - Optimizer Update (Adam → AdamW)
@@ -75,7 +75,7 @@ To improve model accuracy and stability, as suggested in our feedback, we transi
   - Increased Hidden Size (64), Number of Layers (3), and Epochs (30)
   - Why: A deeper and wider network has a greater capacity to model complex temporal patterns in the data.
   - Benefit: Enhanced model accuracy, improved forecasting performance, and reduced prediction errors.
-
+<br/>
 - Model Performance Comparison: GRU vs. LSTM
   - GRU Model
   - Training Performance: Achieved stable training loss reduction over epochs (Epoch 0: 0.761 → Epoch 9: 0.592).
@@ -117,8 +117,8 @@ In order to run on the actual dataset, rather than our example data:
   - overall_AQI
 - Store your testing and training data (csv file format) as a file under file datasets/your_wanted file name, name them as "test_with_aqi" and "train_with_aqi".
 
-- To run and train a model:
-  - make clean (to make sure clean up the environment)
-  - make setup (that will install requirements to create an environment)
-  - make run (runs the whole jupyter notebook)
+To run and train a model:
+- make clean (to make sure clean up the environment)
+- make setup (that will install requirements to create an environment)
+- make run (runs the whole jupyter notebook)
 
