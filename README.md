@@ -109,12 +109,16 @@ To show our improve from GRU model to LSTM model, we used Line  Chart to compare
 The code is primed to run on an example dataset, with training set and testing set in file datasets/dataset. Also shown in github workflow, the code could be tested on datasets in file datasets/dataset_missing_temp_humidity that it will fail with incorrect dataset format.
 
 In order to run on the actual dataset, rather than our example data:
+- Make sure your dataset format included the following features as column inpu: 
+  - datetime
+  - temp
+  - humidity
+  - precip
+  - overall_AQI
+- Store your testing and training data (csv file format) as a file under file datasets/your_wanted file name, name them as "test_with_aqi" and "train_with_aqi".
 
-Make sure your dataset format included: datetime, temp, humidity, precip, overall_AQI as column input.
-Store your testing and training data (csv file format) as a file under file datasets/your_wanted file name, name them as "test_with_aqi" and "train_with_aqi".
-
-To run and train a model:
-make clean (to make sure clean up the environment)
-make setup (that will install requirements to create an environment)
-make run (runs the whole jupyter notebook)
+- To run and train a model:
+  - make clean (to make sure clean up the environment)
+  - make setup (that will install requirements to create an environment)
+  - make run (runs the whole jupyter notebook)
 
